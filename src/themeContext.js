@@ -1,7 +1,9 @@
-const React = require("react");
-const { createContext } = React;
+const { createContext, useContext } = React;
 
-const ThemeContext = createContext("dark");
-console.log(ThemeContext);
+export const ThemeContext = createContext("dark");
+
+export function useTheme() {
+   return useContext(ThemeContext);
+}
 
 // console.log(React);

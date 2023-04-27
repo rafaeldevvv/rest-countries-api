@@ -1,13 +1,13 @@
 const {useState, useEffect} = React
 
-function useData(url) {
+export default function useData(url) {
   const [data, setData] = useState(null);
 
   useEffect(() => {
     let ignore = false;
 
     fetch(url)
-      .then((response) => response.json)
+      .then((response) => response.json())
       .then((json) => {
         if (!ignore) {
           setData(json);
