@@ -1,0 +1,226 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap");
+:root {
+  --text: hsl(200, 15%, 8%);
+  --element-background: hsl(0, 0%, 100%);
+  --background: hsl(0, 0%, 98%);
+  --input: hsl(0, 0%, 52%);
+}
+
+html {
+  font-size: 14px;
+}
+
+body {
+  font-family: "Nunito Sans", sans-serif;
+  background-color: var(--background, #ffd);
+  color: var(--text, #000);
+}
+
+.select-field,
+.field-container,
+.country,
+.options-list {
+  box-shadow: 0 0px 7px 0 hsla(0, 0%, 0%, 0.07);
+}
+
+.select-field,
+.field-container {
+  display: flex;
+  align-items: center;
+  background-color: var(--element-background, #fff);
+  border-radius: 0.2rem;
+  height: 50px;
+}
+
+.field-container {
+  cursor: text;
+}
+.field-container .field {
+  color: var(--text, #000);
+}
+.field-container .field::-moz-placeholder {
+  color: var(--input, #fff);
+  display: block;
+}
+.field-container .icon,
+.field-container .field::placeholder {
+  color: var(--input, #fff);
+  display: block;
+}
+.field-container svg {
+  margin-inline: 2rem;
+}
+.field-container svg > * {
+  fill: var(--input, #fff);
+}
+.field-container .field {
+  font-size: 0.9rem;
+  height: 100%;
+  width: 100%;
+}
+
+.select-field {
+  --inner-padding: 1.5rem;
+  position: relative;
+  width: 200px;
+  justify-content: space-between;
+  cursor: pointer;
+  padding-inline: var(--inner-padding, 1.5rem);
+  font-size: 0.9rem;
+}
+.select-field .select-value {
+  color: var(--text, #000);
+}
+.select-field .options-list {
+  position: absolute;
+  width: 100%;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  background-color: var(--element-background, #fff);
+  border-radius: 0.2rem;
+  padding-block: 0.8rem;
+  opacity: 0;
+  pointer-events: none;
+}
+.select-field .options-list li {
+  color: hsl(200, 15%, 8%);
+  padding: 0.2rem var(--inner-padding, 1.5rem);
+  transition: background-color 0.3s;
+  color: var(--text, #000);
+}
+.select-field .options-list li:hover {
+  background-color: var(--background, hsl(0, 0%, 98%));
+}
+.select-field .options-list.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.container {
+  max-width: 1280px;
+  margin-inline: auto;
+}
+
+/* ################ header ################ */
+header {
+  padding-inline: min(4vw, 5rem);
+  background-color: var(--element-background, #fff);
+  box-shadow: 0 0px 4px 0 hsla(0, 0%, 0%, 0.2);
+  height: 80px;
+}
+header h1 {
+  font-size: 1rem;
+}
+header .theme-button {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 0.5rem;
+       column-gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text, #000);
+}
+header .theme-button svg {
+  fill: var(--text, #000);
+  font-size: 1.09rem;
+}
+header .container {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ################ search bar ################ */
+section#search-bar {
+  padding-inline: min(5vw, 4rem);
+  margin-block: 1.7rem;
+}
+section#search-bar .field-container {
+  margin-bottom: 3rem;
+}
+
+/* Country List */
+section#countries {
+  padding: 1rem min(14vw, 3rem);
+}
+section#countries .container {
+  display: grid;
+  -moz-column-gap: 5.5rem;
+       column-gap: 5.5rem;
+  row-gap: 3rem;
+  justify-content: space-between;
+}
+
+.country {
+  background-color: var(--element-background, #fff);
+  overflow: hidden;
+  border-radius: 0.4rem;
+  max-width: 450px;
+}
+.country .description {
+  padding: 1.5rem 1.8rem 2.8rem;
+}
+.country img {
+  aspect-ratio: 5/3;
+}
+.country h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.9rem;
+}
+.country p {
+  font-size: 1.05rem;
+  margin-bottom: 0.3rem;
+}
+.country strong {
+  font-weight: 600;
+}
+
+@media (min-width: 576px) {
+  section#countries .container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 756px) {
+  header h1 {
+    font-size: 1.7rem;
+  }
+  header .theme-button {
+    font-size: 1.2rem;
+  }
+  header .theme-button svg {
+    font-size: 1.25rem;
+  }
+  section#search-bar {
+    margin-block: 3.5rem;
+  }
+  section#search-bar .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  section#search-bar .field-container {
+    margin: 0;
+    width: 490px;
+  }
+  section#search-bar .field-container svg {
+    font-size: 1.2rem;
+  }
+  section#search-bar .field-container,
+  section#search-bar .select-field {
+    height: 55px;
+  }
+  section#search-bar .select-field,
+  section#search-bar .field {
+    font-size: 1.1rem;
+  }
+}
+@media (min-width: 856px) {
+  section#countries .container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 1200px) {
+  section#countries .container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}/*# sourceMappingURL=index.css.map */
