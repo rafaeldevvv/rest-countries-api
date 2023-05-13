@@ -1,0 +1,132 @@
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.btn {
+  background-color: var(--element-background, #fff);
+  padding: 0.5rem 2rem;
+  border-radius: 0.2rem;
+
+  display: inline-block;
+  transition-property: color, background-color, filter;
+  transition-duration: 0.3s;
+  box-shadow: 0 0 10px 0px hsla(0, 0%, 0%, 0.4);
+
+  cursor: pointer;
+}
+.btn:hover {
+  filter: brightness(0.5);
+}
+
+.primary-btn {
+  svg {
+    margin-right: 0.5rem;
+  }
+}
+
+.select-field,
+.field-container,
+.country,
+.options-list {
+  box-shadow: 0 0px 7px 0 hsla(0, 0%, 0%, 0.07);
+}
+
+.select-field,
+.field-container {
+  display: flex;
+  align-items: center;
+  background-color: var(--element-background, #fff);
+  border-radius: 0.2rem;
+  height: 50px;
+}
+
+.field-container {
+  cursor: text;
+
+  .field {
+    color: var(--text, #000);
+  }
+
+  .icon,
+  .field::placeholder {
+    color: var(--input, #fff);
+    display: block;
+  }
+
+  svg {
+    margin-inline: 2rem;
+
+    > * {
+      fill: var(--input, #fff);
+    }
+  }
+
+  .field {
+    font-size: 0.9rem;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.select-field {
+  --inner-padding: 1.5rem;
+  position: relative;
+  width: 200px;
+  justify-content: space-between;
+  cursor: pointer;
+
+  padding-inline: var(--inner-padding, 1.5rem);
+  font-size: 0.9rem;
+
+  .select-value {
+    color: var(--text, #000);
+  }
+
+  .options-list {
+    position: absolute;
+    width: 100%;
+    top: calc(100% + 0.5rem);
+    left: 0;
+
+    background-color: var(--element-background, #fff);
+    border-radius: 0.2rem;
+    padding-block: 0.8rem;
+
+    opacity: 0;
+    pointer-events: none;
+
+    li {
+      color: hsl(200, 15%, 8%);
+      padding: 0.2rem var(--inner-padding, 1.5rem);
+      transition: background-color 0.3s;
+      color: var(--text, #000);
+    }
+
+    li:hover {
+      background-color: var(--background, hsl(0, 0%, 98%));
+    }
+  }
+
+  .options-list.visible {
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+.key-value-list {
+  li + li {
+    margin-top: 0.7rem;
+  }
+
+  .key {
+    font-weight: 600;
+  }
+}

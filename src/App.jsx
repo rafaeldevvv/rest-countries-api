@@ -1,4 +1,4 @@
-import { CountryList } from "./countryComponents.jsx";
+import CountryList from "./CountryList.jsx";
 import { SearchBar } from "./search.jsx";
 import Header from "./Header.jsx";
 import getFilteredCountries from "./getFilteredCountries.js";

@@ -17,97 +17,14 @@ body {
   color: var(--text, #000);
 }
 
-.select-field,
-.field-container,
-.country,
-.options-list {
-  box-shadow: 0 0px 7px 0 hsla(0, 0%, 0%, 0.07);
-}
-
-.select-field,
-.field-container {
-  display: flex;
-  align-items: center;
-  background-color: var(--element-background, #fff);
-  border-radius: 0.2rem;
-  height: 50px;
-}
-
-.field-container {
-  cursor: text;
-
-  .field {
-    color: var(--text, #000);
-  }
-
-  .icon,
-  .field::placeholder {
-    color: var(--input, #fff);
-    display: block;
-  }
-
-  svg {
-    margin-inline: 2rem;
-
-    > * {
-      fill: var(--input, #fff);
-    }
-  }
-
-  .field {
-    font-size: 0.9rem;
-    height: 100%;
-    width: 100%;
-  }
-}
-
-.select-field {
-  --inner-padding: 1.5rem;
-  position: relative;
-  width: 200px;
-  justify-content: space-between;
-  cursor: pointer;
-
-  padding-inline: var(--inner-padding, 1.5rem);
-  font-size: 0.9rem;
-
-  .select-value {
-    color: var(--text, #000);
-  }
-
-  .options-list {
-    position: absolute;
-    width: 100%;
-    top: calc(100% + 0.5rem);
-    left: 0;
-
-    background-color: var(--element-background, #fff);
-    border-radius: 0.2rem;
-    padding-block: 0.8rem;
-
-    opacity: 0;
-    pointer-events: none;
-
-    li {
-      color: hsl(200, 15%, 8%);
-      padding: 0.2rem var(--inner-padding, 1.5rem);
-      transition: background-color 0.3s;
-      color: var(--text, #000);
-    }
-    li:hover {
-      background-color: var(--background, hsl(0, 0%, 98%));
-    }
-  }
-
-  .options-list.visible {
-    opacity: 1;
-    pointer-events: all;
-  }
-}
-
 .container {
   max-width: 1280px;
   margin-inline: auto;
+}
+
+.flag {
+  aspect-ratio: 5 / 3;
+  display: block;
 }
 
 /* ################ header ################ */
@@ -143,6 +60,15 @@ header {
   }
 }
 
+/* main */
+main {
+  margin-bottom: 10rem;
+
+  .button-container {
+    margin-bottom: 4rem;
+  }
+}
+
 /* ################ search bar ################ */
 section#search-bar {
   padding-inline: min(5vw, 4rem);
@@ -162,6 +88,7 @@ section#countries {
     column-gap: 5.5rem;
     row-gap: 3rem;
     justify-content: space-between;
+    align-items: stretch;
   }
 }
 
@@ -175,20 +102,66 @@ section#countries {
     padding: 1.5rem 1.8rem 2.8rem;
   }
 
-  img {
-    aspect-ratio: 5 / 3;
-  }
-
   h3 {
     font-size: 1.3rem;
     margin-bottom: 0.9rem;
   }
-  p {
-    font-size: 1.05rem;
-    margin-bottom: 0.3rem;
+
+  .key-value-list {
+    li {
+      font-size: 1.05rem;
+    }
   }
-  strong {
-    font-weight: 600;
+
+}
+
+section#details {
+  padding-inline: min(8vw, 3rem);
+  margin-top: 3rem;
+
+  .flag {
+    margin-bottom: 3rem;
+  }
+
+  h2 {
+    margin-bottom: 1.7rem;
+    font-size: 1.7rem;
+  }
+
+  .lists {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .key-value-list {
+    li {
+      font-size: 1.02rem;
+    }
+  }
+
+  .border-countries-container {
+    strong {
+      font-size: 1.2rem;
+      margin-bottom: 1.3rem;
+      display: block;
+    }
+  }
+
+  .border-countries-list {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+
+    .btn {
+      background-color: var(--element-background, #fff);
+      color: var(--text, #000);
+      padding: 0.5rem 2rem;
+      display: block;
+      border-radius: 0.3rem;
+      font-size: 0.8rem;
+    }
   }
 }
 
@@ -196,6 +169,21 @@ section#countries {
   section#countries {
     .container {
       grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+@media (min-width: 676px) {
+  section#details {
+    .lists {
+      flex-direction: row;
+      gap: min(8rem, 8vw);
+    }
+
+    .key-value-list {
+      li {
+        font-size: 1.1rem;
+      }
     }
   }
 }
@@ -249,6 +237,58 @@ section#countries {
   section#countries {
     .container {
       grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  section#details {
+    .button-container {
+      margin-bottom: 6rem;
+
+      .btn {
+        font-size: 1.2rem;
+      }
+    }
+
+    .flag {
+      margin-inline: auto;
+    }
+
+    h2 {
+      font-size: 2.3rem;
+    }
+
+    .key-value-list {
+      li {
+        font-size: 1.2rem;
+      }
+    }
+
+    .lists {
+      margin-bottom: 5.5rem;
+    }
+
+    .border-countries-list {
+      .btn {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 992px) and (orientation: landscape) {
+  section#details {
+    margin-top: 13vh;
+
+    .country-info {
+      display: flex;
+      gap: min(10vw, 10rem);
+    }
+
+    .flag {
+      width: 45%;
+      margin: 0;
     }
   }
 }

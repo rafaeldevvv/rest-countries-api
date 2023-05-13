@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
+import KeyValueList from "./components/KeyValueList.jsx";
 
-export function CountryList({ countries }) {
+export default function CountryList({ countries }) {
   return (
     <section id="countries">
       <div className="container">
@@ -17,21 +18,17 @@ export function Country({ country }) {
   return (
     <Link to={`countries/${country.cca3}`}>
       <article className="country">
-        <img src={country.flags.svg} alt={country.flags.alt} />
+        <img src={country.flags.svg} alt={country.flags.alt} className="flag" />
+
         <div className="description">
-          <h3>{country.name.common}</h3>
-          <p>
-            <strong>Population: </strong>
-            {country.population.toLocaleString()}
-          </p>
-          <p>
-            <strong>Region: </strong>
-            {country.region}
-          </p>
-          <p>
-            <strong>Capital: </strong>
-            {country.capital}
-          </p>
+          <h3 className="country-name">{country.name.common}</h3>
+          <KeyValueList
+            items={[
+              { key: "Population", value: country.population.toLocaleString() },
+              { key: "Region", value: country.region },
+              { key: "Capital", value: country.capital },
+            ]}
+          />
         </div>
       </article>
     </Link>

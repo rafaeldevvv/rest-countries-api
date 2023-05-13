@@ -1,9 +1,8 @@
-import React from "react";
 import { changeThemeColors } from "./themeColors.js";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root, { loader as rootLoader } from "./routes/root.jsx";
 import ErrorPage from "./error-page.jsx";
-import DetailPage, { loader as countryLoader } from "./routes/country.jsx";
+import DetailPage, { loader as countryLoader } from "./routes/countries.jsx";
 
 import { createRoot } from "react-dom/client";
 const router = createBrowserRouter([
