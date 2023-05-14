@@ -1,14 +1,16 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { icon } from "@fortawesome/fontawesome-svg-core/import.macro";
+const { useState } = React;
 
-import { useState } from "react";
-
-export function SearchBar({
+export default function SearchBar({
   regions,
   selectedRegion,
   onSelectRegion,
   onChangeSearchedCountry,
   searchedCountry,
+  onSelectSortBy,
+  selectedSortBy,
+  sortByOptions,
 }) {
   return (
     <section id="search-bar">
@@ -17,19 +19,28 @@ export function SearchBar({
           onChange={onChangeSearchedCountry}
           searchedCountry={searchedCountry}
         />
-        <SelectList
-          options={regions}
-          selectedOption={selectedRegion}
-          onSelect={onSelectRegion}
-          defaultText={"Filter by Region"}
-          resetText={"All"}
-        />
+        <div className="select-lists-container">
+          <SelectList
+            options={sortByOptions}
+            selectedOption={selectedSortBy}
+            onSelect={onSelectSortBy}
+            defaultText={"Sort By"}
+            resetText={"None"}
+          />
+          <SelectList
+            options={regions}
+            selectedOption={selectedRegion}
+            onSelect={onSelectRegion}
+            defaultText={"Filter by Region"}
+            resetText={"All"}
+          />
+        </div>
       </form>
     </section>
   );
 }
 
-function SearchInput({ searchedCountry, onChange }) {
+export function SearchInput({ searchedCountry, onChange }) {
   return (
     <label className="field-container">
       <span className="sr-only">Enter a name of a country</span>
@@ -46,7 +57,7 @@ function SearchInput({ searchedCountry, onChange }) {
   );
 }
 
-function SelectList({
+export function SelectList({
   options,
   selectedOption,
   onSelect,
@@ -64,7 +75,7 @@ function SelectList({
       aria-controls="options-list"
       aria-activedescendant={isShowing ? selectedOption : undefined}
     >
-      <span className="select-value">{selectedOption || defaultText}</span>
+      <span className="selected-value">{selectedOption || defaultText}</span>
       <FontAwesomeIcon icon={icon({ name: "chevron-down" })} />
       <ul
         className={`options-list ${isShowing ? "visible" : ""}`}

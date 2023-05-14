@@ -1,7 +1,7 @@
-import { changeThemeColors } from "./themeColors.js";
+import { changeThemeColors } from "./utilities/themeColors.js";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root, { loader as rootLoader } from "./routes/root.jsx";
-import ErrorPage from "./error-page.jsx";
+import ErrorPage from "./components/ErrorPage.jsx";
 import DetailPage, { loader as countryLoader } from "./routes/countries.jsx";
 
 import { createRoot } from "react-dom/client";
@@ -13,14 +13,14 @@ const router = createBrowserRouter([
     loader: rootLoader,
   },
   {
-    path: "countries/:countryCca3",
+    path: "countries/:identifier",
     element: <DetailPage />,
     errorElement: <ErrorPage />,
     loader: countryLoader,
   },
 ]);
 
-const savedTheme = localStorage.getItem("theme") || "light";
+const savedTheme = localStorage.getItem("theme") || "dark";
 changeThemeColors(savedTheme);
 
 createRoot(document.querySelector("#app-root")).render(

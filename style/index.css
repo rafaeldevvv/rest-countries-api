@@ -68,8 +68,15 @@ section#search-bar {
   padding-inline: min(5vw, 4rem);
   margin-block: 1.7rem;
 }
-section#search-bar .field-container {
-  margin-bottom: 3rem;
+section#search-bar .container {
+  display: flex;
+  gap: 3rem;
+  flex-direction: column;
+}
+section#search-bar .select-lists-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 /* Country List */
@@ -149,7 +156,7 @@ section#details .border-countries-list .btn {
 @media (min-width: 676px) {
   section#details .lists {
     flex-direction: row;
-    gap: min(8rem, 8vw);
+    gap: min(4.5rem, 6vw);
   }
   section#details .key-value-list li {
     font-size: 1.1rem;
@@ -169,16 +176,17 @@ section#details .border-countries-list .btn {
     margin-block: 3.5rem;
   }
   section#search-bar .container {
-    display: flex;
-    flex-direction: row;
     justify-content: space-between;
+    flex-direction: row;
   }
   section#search-bar .field-container {
-    margin: 0;
-    width: 490px;
+    width: min(100%, 480px);
   }
   section#search-bar .field-container svg {
     font-size: 1.2rem;
+  }
+  section#search-bar .select-lists-container {
+    flex-direction: row;
   }
   section#search-bar .field-container,
   section#search-bar .select-field {

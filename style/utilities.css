@@ -22,7 +22,7 @@
 }
 
 .btn:hover {
-  filter: brightness(0.5);
+  filter: brightness(0.8);
 }
 
 .primary-btn svg {
@@ -81,13 +81,14 @@
   padding-inline: var(--inner-padding, 1.5rem);
   font-size: 0.9rem;
 }
-.select-field .select-value {
+.select-field .selected-value {
   color: var(--text, #000);
 }
 .select-field .options-list {
   position: absolute;
   width: 100%;
   top: calc(100% + 0.5rem);
+  z-index: 999;
   left: 0;
   background-color: var(--element-background, #fff);
   border-radius: 0.2rem;
@@ -97,7 +98,7 @@
 }
 .select-field .options-list li {
   color: hsl(200, 15%, 8%);
-  padding: 0.2rem var(--inner-padding, 1.5rem);
+  padding: 0.3rem var(--inner-padding, 1.5rem);
   transition: background-color 0.3s;
   color: var(--text, #000);
 }

@@ -1,12 +1,18 @@
 import CountryList from "./CountryList.jsx";
-import { SearchBar } from "./search.jsx";
+import SearchBar from "./SearchBar.jsx";
 import Header from "./Header.jsx";
-import getFilteredCountries from "./getFilteredCountries.js";
-import { useState } from "react";
+import getFilteredCountries from "../utilities/getFilteredCountries.js";
 
-export default function CountriesApp({ initialTheme, countries }) {
-  const [selectedRegion, setSelectedRegion] = useState(null);
+const { useState } = React;
+
+export default function CountriesApp({
+  initialTheme,
+  countries,
+  countriesSorter,
+}) {
   const [searchedCountry, setSearchedCountry] = useState("");
+  const [selectedSortBy, setSortBy] = useState(null);
+  const [selectedRegion, setSelectedRegion] = useState(null);
 
   const regions = countries?.reduce((regions, currentCountry) => {
     if (!regions.includes(currentCountry.region)) {
@@ -16,9 +22,14 @@ export default function CountriesApp({ initialTheme, countries }) {
     }
   }, []);
 
-  const visibleCountries =
+  const filteredCountries =
     countries &&
     getFilteredCountries(countries, searchedCountry, selectedRegion);
+
+  const sortedCountries =
+    selectedSortBy !== null
+      ? countriesSorter.sort(filteredCountries || [], selectedSortBy)
+      : filteredCountries;
 
   return (
     <div>
@@ -30,8 +41,11 @@ export default function CountriesApp({ initialTheme, countries }) {
           onSelectRegion={setSelectedRegion}
           searchedCountry={searchedCountry}
           onChangeSearchedCountry={setSearchedCountry}
+          selectedSortBy={selectedSortBy}
+          onSelectSortBy={setSortBy}
+          sortByOptions={countriesSorter.typesOfSorting}
         />
-        <CountryList countries={visibleCountries || []} />
+        <CountryList countries={sortedCountries || []} />
       </main>
     </div>
   );

@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { icon } from "@fortawesome/fontawesome-svg-core/import.macro";
-import { changeThemeColors } from "./themeColors.js";
-import { useState } from "react";
+import { changeThemeColors } from "../utilities/themeColors.js";
+const { useState } = React;
 
 export default function Header({ initialTheme }) {
   return (
@@ -30,14 +30,14 @@ function ThemeButton({ initialTheme }) {
       <FontAwesomeIcon
         icon={icon({
           style: "regular",
-          name: "sun",
+          name: "moon",
         })}
       />
     ) : (
       <FontAwesomeIcon
         icon={icon({
           style: "regular",
-          name: "moon",
+          name: "sun",
         })}
       />
     );
@@ -45,7 +45,7 @@ function ThemeButton({ initialTheme }) {
   return (
     <button className="theme-button" onClick={handleClick}>
       {themeIcon}
-      {theme === "dark" ? "Light Mode" : "Dark Mode"}
+      {theme === "dark" ? "Dark Mode" : "Light Mode"}
     </button>
   );
 }

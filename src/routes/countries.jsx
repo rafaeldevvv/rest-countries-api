@@ -1,8 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { icon } from "@fortawesome/fontawesome-svg-core/import.macro";
-import Header from "../Header";
-import { useLoaderData, Link } from "react-router-dom";
+
+import Header from "../components/Header";
 import KeyValueList from "../components/KeyValueList.jsx";
+
+import { useLoaderData, Link } from "react-router-dom";
 
 export default function DetailPage() {
   const { country, initialTheme, borderCountries } = useLoaderData();
@@ -47,7 +49,7 @@ function BorderCountriesList({ borderCountries }) {
     <div className="border-countries-container">
       <strong>Border Countries:</strong>{" "}
       <ul className="border-countries-list">
-        {borderCountries?.map((country) => (
+        {borderCountries.map((country) => (
           <li key={country.cca3}>
             <Link to={`/countries/${country.cca3}`}>
               <span className="btn">{country.name.common}</span>
@@ -106,13 +108,13 @@ function DetailLists({ country }) {
           {
             key: "Currencies",
             value: Object.keys(country.currencies || {})
-              ?.map((currency) => country.currencies[currency].name)
+              .map((currency) => country.currencies[currency].name)
               .join(", "),
           },
           {
             key: "Languages",
             value: Object.keys(country.languages || {})
-              ?.map((language) => country.languages[language])
+              .map((language) => country.languages[language])
               .join(", "),
           },
         ]}
@@ -121,20 +123,20 @@ function DetailLists({ country }) {
   );
 }
 
-function getCountry(countryCca3) {
-  return fetch("https://restcountries.com/v3.1/alpha/" + countryCca3)
+function getCountry(identifier) {
+  return fetch("https://restcountries.com/v3.1/alpha/" + identifier)
     .then((response) => response.json())
     .then((country) => country[0]);
 }
 
 export async function loader({ params }) {
-  const country = await getCountry(params.countryCca3);
-  const borderPromises = country.borders?.map(getCountry) || [];
+  const country = await getCountry(params.identifier);
+  const borderCountriesPromises = country.borders?.map(getCountry) || [];
   const initialTheme = localStorage.getItem("theme");
 
   return {
     country,
     initialTheme,
-    borderCountries: (await Promise.all(borderPromises)),
+    borderCountries: await Promise.all(borderCountriesPromises),
   };
 }

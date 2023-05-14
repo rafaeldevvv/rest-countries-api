@@ -74,8 +74,16 @@ section#search-bar {
   padding-inline: min(5vw, 4rem);
   margin-block: 1.7rem;
 
-  .field-container {
-    margin-bottom: 3rem;
+  .container {
+    display: flex;
+    gap: 3rem;
+    flex-direction: column;
+  }
+
+  .select-lists-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
 }
 
@@ -177,7 +185,7 @@ section#details {
   section#details {
     .lists {
       flex-direction: row;
-      gap: min(8rem, 8vw);
+      gap: min(4.5rem, 6vw);
     }
 
     .key-value-list {
@@ -207,18 +215,20 @@ section#details {
     margin-block: 3.5rem;
 
     .container {
-      display: flex;
-      flex-direction: row;
       justify-content: space-between;
+      flex-direction: row;
     }
 
     .field-container {
-      margin: 0;
-      width: 490px;
+      width: min(100%, 480px);
 
       svg {
         font-size: 1.2rem;
       }
+    }
+
+    .select-lists-container {
+      flex-direction: row;
     }
 
     .field-container,

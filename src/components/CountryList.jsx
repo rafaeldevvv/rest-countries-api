@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import KeyValueList from "./components/KeyValueList.jsx";
+import KeyValueList from "./KeyValueList.jsx";
 
 export default function CountryList({ countries }) {
   return (
