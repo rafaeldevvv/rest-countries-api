@@ -10,13 +10,13 @@ import { createRoot } from "react-dom/client";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/rest-countries-api/",
     element: <Root />,
     errorElement: <ErrorPage />,
     loader: rootLoader,
   },
   {
-    path: "/countries/:identifier",
+    path: "/rest-countries-api/countries/:identifier",
     element: <CountryDetailPage />,
     errorElement: <ErrorPage />,
     loader: countryLoader,

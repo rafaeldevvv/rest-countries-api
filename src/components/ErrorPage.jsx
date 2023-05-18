@@ -14,7 +14,7 @@ export default function ErrorPage() {
       <main style={{ paddingBlock: "4rem", paddingInline: "min(8vw, 3rem)" }}>
         <div className="container">
           <div className="button-container">
-            <Link to="/">
+            <Link to="/rest-countries-api/">
               <span className="primary-btn btn">
                 <FontAwesomeIcon icon={icon({ name: "chevron-left" })} />
                 Back

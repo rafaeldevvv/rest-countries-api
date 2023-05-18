@@ -16,7 +16,7 @@ export default function CountryList({ countries }) {
 
 export function Country({ country }) {
   return (
-    <Link to={`countries/${country.cca3}`}>
+    <Link to={`rest-countries-api/countries/${country.cca3}`}>
       <article className="country">
         <img src={country.flags.svg} alt={country.flags.alt} className="flag" />
 

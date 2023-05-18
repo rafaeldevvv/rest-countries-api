@@ -12,7 +12,7 @@ export default function DetailPage({ country, borderCountries, initialTheme }) {
         <section id="details">
           <div className="container">
             <div className="button-container">
-              <Link to="/">
+              <Link to="/rest-countries-api/">
                 <span className="primary-btn btn">
                   <FontAwesomeIcon icon={icon({ name: "chevron-left" })} />
                   Back
@@ -47,7 +47,7 @@ function BorderCountriesList({ borderCountries }) {
       <ul className="border-countries-list">
         {borderCountries.map((country) => (
           <li key={country.cca3}>
-            <Link to={`/countries/${country.cca3}`}>
+            <Link to={`rest-countries-api/countries/${country.cca3}`}>
               <span className="btn">{country.name.common}</span>
             </Link>
           </li>
