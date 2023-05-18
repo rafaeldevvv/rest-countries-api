@@ -47,7 +47,7 @@ function BorderCountriesList({ borderCountries }) {
       <ul className="border-countries-list">
         {borderCountries.map((country) => (
           <li key={country.cca3}>
-            <Link to={`rest-countries-api/countries/${country.cca3}`}>
+            <Link to={`/rest-countries-api/countries/${country.cca3}`}>
               <span className="btn">{country.name.common}</span>
             </Link>
           </li>
