@@ -57,7 +57,7 @@ header .container {
 
 /* main */
 main {
-  margin-bottom: 10rem;
+  margin-bottom: 33vh;
 }
 main .button-container {
   margin-bottom: 4rem;
@@ -72,6 +72,20 @@ section#search-bar .container {
   display: flex;
   gap: 3rem;
   flex-direction: column;
+}
+section#search-bar .closest-country-message {
+  cursor: pointer;
+  color: hsl(200, 100%, 50%);
+  font-size: 0.9rem;
+  margin-left: 0.9rem;
+  margin-top: 0.3rem;
+}
+section#search-bar .closest-country-message .strong {
+  font-style: italic;
+  font-weight: 600;
+}
+section#search-bar .closest-country-message:hover {
+  text-decoration: underline;
 }
 section#search-bar .select-lists-container {
   display: flex;
@@ -179,8 +193,11 @@ section#details .border-countries-list .btn {
     justify-content: space-between;
     flex-direction: row;
   }
-  section#search-bar .field-container {
+  section#search-bar .search-input-container {
     width: min(100%, 480px);
+  }
+  section#search-bar .closest-country-message {
+    font-size: 1rem;
   }
   section#search-bar .field-container svg {
     font-size: 1.2rem;

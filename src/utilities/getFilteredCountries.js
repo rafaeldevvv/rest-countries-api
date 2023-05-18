@@ -1,5 +1,5 @@
 export default function getFilteredCountries(countries, name, region) {
-  const escaped = name.replace(/[\/\\$^.*|()\[\]\{\}]/, "\\$&");
+  const escaped = name.replace(/[\/\\$^.*|)(\[\]\{\}]/g, "\\$&");
   const nameRegExp = new RegExp(escaped, "i");
 
   let filteredCountries = countries.filter((c) =>

@@ -11,14 +11,32 @@ export default function SearchBar({
   onSelectSortBy,
   selectedSortBy,
   sortByOptions,
+  closestMatchingCountry,
 }) {
   return (
     <section id="search-bar">
       <form className="container">
-        <SearchInput
-          onChange={onChangeSearchedCountry}
-          searchedCountry={searchedCountry}
-        />
+        <div className="search-input-container">
+          <SearchInput
+            onChange={onChangeSearchedCountry}
+            searchedCountry={searchedCountry}
+          />
+          {closestMatchingCountry && (
+            <p
+              className="closest-country-message"
+              onClick={() => {
+                onChangeSearchedCountry(closestMatchingCountry.name.common);
+                onSelectRegion(closestMatchingCountry.region);
+              }}
+            >
+              You might mean{" "}
+              <span className="strong">
+                {closestMatchingCountry.name.common}
+              </span>{" "}
+              in <span className="strong">{closestMatchingCountry.region}</span>
+            </p>
+          )}
+        </div>
         <div className="select-lists-container">
           <SelectList
             options={sortByOptions}
@@ -46,6 +64,7 @@ export function SearchInput({ searchedCountry, onChange }) {
       <span className="sr-only">Enter a name of a country</span>
       <FontAwesomeIcon icon={icon({ name: "magnifying-glass" })} />
       <input
+        type="text"
         className="field"
         value={searchedCountry}
         onChange={(e) => {
@@ -74,6 +93,7 @@ export function SelectList({
       aria-owns="options-list"
       aria-controls="options-list"
       aria-activedescendant={isShowing ? selectedOption : undefined}
+      tabIndex="1"
     >
       <span className="selected-value">{selectedOption || defaultText}</span>
       <FontAwesomeIcon icon={icon({ name: "chevron-down" })} />

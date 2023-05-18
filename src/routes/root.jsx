@@ -13,10 +13,14 @@ export default function Root() {
   );
 }
 
-export async function loader() {
-  const countries = await fetch("https://restcountries.com/v3.1/all").then(
-    (response) => response.json()
+function getAllCountries() {
+  return fetch("https://restcountries.com/v3.1/all").then((response) =>
+    response.json()
   );
+}
+
+export async function loader() {
+  const countries = await getAllCountries();
   const initialTheme = localStorage.getItem("theme") || "dark";
   return { countries, initialTheme, countriesSorter };
 }

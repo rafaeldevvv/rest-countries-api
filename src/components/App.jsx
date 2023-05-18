@@ -2,6 +2,7 @@ import CountryList from "./CountryList.jsx";
 import SearchBar from "./SearchBar.jsx";
 import Header from "./Header.jsx";
 import getFilteredCountries from "../utilities/getFilteredCountries.js";
+import findClosestMatchingCountry from "../utilities/findClosestMatchingCountry.js";
 
 const { useState } = React;
 
@@ -11,7 +12,7 @@ export default function CountriesApp({
   countriesSorter,
 }) {
   const [searchedCountry, setSearchedCountry] = useState("");
-  const [selectedSortBy, setSortBy] = useState(null);
+  const [selectedSortBy, setSelectedSortBy] = useState(null);
   const [selectedRegion, setSelectedRegion] = useState(null);
 
   const regions = countries?.reduce((regions, currentCountry) => {
@@ -22,14 +23,22 @@ export default function CountriesApp({
     }
   }, []);
 
-  const filteredCountries =
-    countries &&
-    getFilteredCountries(countries, searchedCountry, selectedRegion);
+  // filter
+  const filteredCountries = countries
+    ? getFilteredCountries(countries, searchedCountry, selectedRegion)
+    : [];
 
+  // sort
   const sortedCountries =
     selectedSortBy !== null
-      ? countriesSorter.sort(filteredCountries || [], selectedSortBy)
+      ? countriesSorter.sort(filteredCountries, selectedSortBy)
       : filteredCountries;
+
+  // if the user typed something and there's no matching
+  const closestMatchingCountry =
+    searchedCountry && sortedCountries.length === 0
+      ? findClosestMatchingCountry(countries, searchedCountry)
+      : null;
 
   return (
     <div>
@@ -42,10 +51,11 @@ export default function CountriesApp({
           searchedCountry={searchedCountry}
           onChangeSearchedCountry={setSearchedCountry}
           selectedSortBy={selectedSortBy}
-          onSelectSortBy={setSortBy}
+          onSelectSortBy={setSelectedSortBy}
           sortByOptions={countriesSorter.typesOfSorting}
+          closestMatchingCountry={closestMatchingCountry}
         />
-        <CountryList countries={sortedCountries || []} />
+        <CountryList countries={sortedCountries} />
       </main>
     </div>
   );

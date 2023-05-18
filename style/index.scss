@@ -62,7 +62,7 @@ header {
 
 /* main */
 main {
-  margin-bottom: 10rem;
+  margin-bottom: 33vh;
 
   .button-container {
     margin-bottom: 4rem;
@@ -78,6 +78,23 @@ section#search-bar {
     display: flex;
     gap: 3rem;
     flex-direction: column;
+  }
+
+  .closest-country-message {
+    cursor: pointer;
+    color: hsl(200, 100%, 50%);
+    font-size: 0.9rem;
+    margin-left: 0.9rem;
+    margin-top: 0.3rem;
+
+    .strong {
+      font-style: italic;
+      font-weight: 600;
+    }
+  }
+
+  .closest-country-message:hover {
+    text-decoration: underline;
   }
 
   .select-lists-container {
@@ -120,7 +137,6 @@ section#countries {
       font-size: 1.05rem;
     }
   }
-
 }
 
 section#details {
@@ -219,9 +235,15 @@ section#details {
       flex-direction: row;
     }
 
-    .field-container {
+    .search-input-container {
       width: min(100%, 480px);
+    }
 
+    .closest-country-message {
+      font-size: 1rem;
+    }
+
+    .field-container {
       svg {
         font-size: 1.2rem;
       }

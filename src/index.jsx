@@ -2,9 +2,12 @@ import { changeThemeColors } from "./utilities/themeColors.js";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root, { loader as rootLoader } from "./routes/root.jsx";
 import ErrorPage from "./components/ErrorPage.jsx";
-import DetailPage, { loader as countryLoader } from "./routes/countries.jsx";
+import CountryDetailPage, {
+  loader as countryLoader,
+} from "./routes/countries.jsx";
 
 import { createRoot } from "react-dom/client";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -13,8 +16,8 @@ const router = createBrowserRouter([
     loader: rootLoader,
   },
   {
-    path: "countries/:identifier",
-    element: <DetailPage />,
+    path: "/countries/:identifier",
+    element: <CountryDetailPage />,
     errorElement: <ErrorPage />,
     loader: countryLoader,
   },
