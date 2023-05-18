@@ -118,7 +118,6 @@ const router = createBrowserRouter([
 ]);
 ```
 
-
 The optional chaining operator is really useful. First time I used it in practice and I intend to use it more often.
 
 ```js
@@ -135,7 +134,6 @@ function CountriesApp() {
   //...
 }
 ```
-
 
 I am really proud of this custom select list I built. I used a lot of aria attributes to improve accessibility and make it usable. I included the reset text because it would be quite annoying having to reload the page to show all countries again.
 
@@ -181,7 +179,6 @@ export function SelectList({
 }
 ```
 
-
 I wanted to use the script in the head tag and just use an tag with the proper class but I discovered this React component to display font awesome icons and I wanted to try it.
 
 ```js
@@ -189,13 +186,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { icon } from "@fortawesome/fontawesome-svg-core/import.macro";
 ```
 
-
 If you've read my code you might have wondered why I passed the countriesSorter as prop if the sort method is pure. Well that's because later on I passed the typesOfSorting property of the countriesSorter object down to the SearchBar component. If I hadn't done that I would be accessing a variable outside the function making it impure.
 
 ```js
 function CountriesApp({ initialTheme, countries, countriesSorter }) {}
 ```
-
 
 This is a very simple way I found to filter the countries.
 
@@ -214,7 +209,6 @@ export default function getFilteredCountries(countries, name, region) {
   return filteredCountries;
 }
 ```
-
 
 i thought of using this function to get the items from the country object. But that's totally unnecessary. I just wanted to share it:
 
@@ -245,8 +239,6 @@ function getDataFromCountry(items) {
 ### Extra Features
 
 I added two extra features to this project: a sorting mechanism that allows the user to sort the list of countries and a suggestion of a country name and region when the country that the user is looking for is not found.
-
-
 
 I wanted a convenient way to add and remove sorting types. So I got inspiration from the design pattern called factory pattern and built this object to register sorting types.
 
@@ -387,6 +379,7 @@ One thing that I realized is about performance. This is application is kind of c
 - [REST Countries API](https://restcountries.com/) - This helped me make request to the api.
 - [W3 schools Media Query Reference](https://www.w3schools.com/cssref/css3_pr_mediaquery.php) - I hadn't used the orientation media feature before so I needed to take a look at it again.
 - [Font Awesome React Icons](https://fontawesome.com/docs/web/use-with/react/) - This helped me use the FontAwesomeIcon component.
+- [Sort Method Reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) - Reference for the sort method of arrays.
 
 ## Author
 
