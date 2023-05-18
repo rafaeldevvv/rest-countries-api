@@ -118,7 +118,8 @@ const router = createBrowserRouter([
 ]);
 ```
 
-The optional chaining operator is really useful. First time I used it in practice and I intent to use it more often.
+
+The optional chaining operator is really useful. First time I used it in practice and I intend to use it more often.
 
 ```js
 function CountriesApp() {
@@ -134,6 +135,7 @@ function CountriesApp() {
   //...
 }
 ```
+
 
 I am really proud of this custom select list I built. I used a lot of aria attributes to improve accessibility and make it usable. I included the reset text because it would be quite annoying having to reload the page to show all countries again.
 
@@ -179,18 +181,21 @@ export function SelectList({
 }
 ```
 
-I wanted to use the script in the head tag and just use an <i></i> tag with the proper class but I discovered this React component to display font awesome icons and I wanted to try it.
+
+I wanted to use the script in the head tag and just use an tag with the proper class but I discovered this React component to display font awesome icons and I wanted to try it.
 
 ```js
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { icon } from "@fortawesome/fontawesome-svg-core/import.macro";
 ```
 
+
 If you've read my code you might have wondered why I passed the countriesSorter as prop if the sort method is pure. Well that's because later on I passed the typesOfSorting property of the countriesSorter object down to the SearchBar component. If I hadn't done that I would be accessing a variable outside the function making it impure.
 
 ```js
 function CountriesApp({ initialTheme, countries, countriesSorter }) {}
 ```
+
 
 This is a very simple way I found to filter the countries.
 
@@ -210,7 +215,8 @@ export default function getFilteredCountries(countries, name, region) {
 }
 ```
 
-i thought of using this function to get the items from the country object. But that's totally unnecessary. I just wanted to share it.
+
+i thought of using this function to get the items from the country object. But that's totally unnecessary. I just wanted to share it:
 
 ```js
 function getDataFromCountry(items) {
@@ -238,6 +244,10 @@ function getDataFromCountry(items) {
 
 ### Extra Features
 
+I added two extra features to this project: a sorting mechanism that allows the user to sort the list of countries and a suggestion of a country name and region when the country that the user is looking for is not found.
+
+
+
 I wanted a convenient way to add and remove sorting types. So I got inspiration from the design pattern called factory pattern and built this object to register sorting types.
 
 ```js
@@ -260,7 +270,7 @@ class ObjectSorter {
 }
 ```
 
-This is the function to get the Levenshtein distance between two strings. It is kind of complex, so you wanna know how this works you can read [this blog](https://medium.com/@ethannam/understanding-the-levenshtein-distance-equation-for-beginners-c4285a5604f0).
+This is the function to get the Levenshtein distance between two strings. It is kind of complex, so if you wanna know how this works you can read [this page](https://medium.com/@ethannam/understanding-the-levenshtein-distance-equation-for-beginners-c4285a5604f0).
 
 ```js
 export default function levDistance(string1, string2) {
@@ -360,9 +370,11 @@ module.exports = {
 
 The ProvidePlugin method makes it possible to make React be like a global variable in my code.
 
+Also, I used the [Thunder Client](https://www.thunderclient.com/) extension for VS Code to help me see how the REST Countries API works.
+
 ### Continued development
 
-This was hands down the biggest project I have ever built until now. I realized there's a lot I still need to learn and I am gonna learn everything i need to become a full stack developer.
+This was hands down the biggest project I have ever built until now. I realized there's still a lot I need to learn and improve.
 
 One thing that I realized is about performance. This is application is kind of cumbersome to use and I don't know how I could improve it(maybe it is because I am making requests to the actual API instead of the local data.json). So I am gonna study more about performance.
 
