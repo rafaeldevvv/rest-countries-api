@@ -4,6 +4,7 @@ import countriesSorter from "../utilities/countriesSorter.js";
 
 export default function Root() {
   const { countries, initialTheme, countriesSorter } = useLoaderData();
+  
   return (
     <App
       countries={countries}

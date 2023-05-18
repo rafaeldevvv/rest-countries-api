@@ -22,7 +22,7 @@ function getCountry(identifier) {
 export async function loader({ params }) {
   const country = await getCountry(params.identifier);
   const borderCountriesPromises = country.borders?.map(getCountry) || [];
-  const initialTheme = localStorage.getItem("theme");
+  const initialTheme = localStorage.getItem("theme") || "dark";
 
   return {
     country,
