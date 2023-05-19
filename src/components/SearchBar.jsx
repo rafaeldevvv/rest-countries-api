@@ -86,7 +86,7 @@ export function SelectList({
 }) {
   const [isShowing, setIsShowing] = useState(false);
 
-  const listId = options.join("");
+  const listId = defaultText.toLowerCase().replace(/ /g, "");
 
   return (
     <div
