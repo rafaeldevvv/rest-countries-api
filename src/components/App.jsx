@@ -36,7 +36,7 @@ export default function CountriesApp({
       <Header initialTheme={initialTheme} />
       <main>
         <SearchBar
-          regions={regions || []}
+          regions={regions}
           selectedRegion={selectedRegion}
           onSelectRegion={setSelectedRegion}
           searchedCountry={searchedCountry}

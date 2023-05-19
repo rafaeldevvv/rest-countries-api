@@ -121,16 +121,10 @@ const router = createBrowserRouter([
 The optional chaining operator is really useful. First time I used it in practice and I intend to use it more often.
 
 ```js
-function CountriesApp() {
+// routes/countries.jsx file
+function loader() {
   // ...
-  const regions = countries?.reduce((regions, currentCountry) => {
-    if (!regions.includes(currentCountry.region)) {
-      return [...regions, currentCountry.region];
-    } else {
-      return regions;
-    }
-  }, []);
-
+  const borderCountriesPromises = country.borders?.map(getCountry) || [];
   //...
 }
 ```
