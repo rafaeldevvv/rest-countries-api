@@ -96,7 +96,6 @@ export function SelectList({
       aria-owns={listId}
       aria-controls={listId}
       aria-activedescendant={isShowing ? selectedOption : undefined}
-      tabIndex="1"
     >
       <span className="selected-value">{selectedOption || defaultText}</span>
       <FontAwesomeIcon icon={icon({ name: "chevron-down" })} />

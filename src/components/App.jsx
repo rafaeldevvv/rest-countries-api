@@ -3,6 +3,7 @@ import SearchBar from "./SearchBar.jsx";
 import Header from "./Header.jsx";
 import getFilteredCountries from "../utilities/getFilteredCountries.js";
 import findClosestMatchingCountry from "../utilities/findClosestMatchingCountry.js";
+import getRegions from '../utilities/getRegions.js'
 
 const { useState } = React;
 
@@ -15,24 +16,14 @@ export default function CountriesApp({
   const [selectedSortBy, setSelectedSortBy] = useState(null);
   const [selectedRegion, setSelectedRegion] = useState(null);
 
-  const regions = countries?.reduce((regions, currentCountry) => {
-    if (!regions.includes(currentCountry.region)) {
-      return [...regions, currentCountry.region];
-    } else {
-      return regions;
-    }
-  }, []);
+  const regions = getRegions(countries);
 
-  // filter
-  const filteredCountries = countries
-    ? getFilteredCountries(countries, searchedCountry, selectedRegion)
-    : [];
-
-  // sort
-  const sortedCountries =
-    selectedSortBy !== null
-      ? countriesSorter.sort(filteredCountries, selectedSortBy)
-      : filteredCountries;
+  const filteredCountries = getFilteredCountries(countries, searchedCountry, selectedRegion);
+    
+  const sortedCountries = countriesSorter.sort(
+    filteredCountries,
+    selectedSortBy
+  );
 
   // if the user typed something and there's no matching
   const closestMatchingCountry =
