@@ -111,6 +111,8 @@ section#countries .container {
   overflow: hidden;
   border-radius: 0.4rem;
   max-width: 450px;
+  transition-property: transform;
+  transition-duration: 0.2s;
 }
 .country .description {
   padding: 1.5rem 1.8rem 2.8rem;
@@ -123,6 +125,11 @@ section#countries .container {
   font-size: 1.05rem;
 }
 
+.country:hover {
+  transform: scale(1.07);
+}
+
+/* #### Detail Page #### */
 section#details {
   padding-inline: min(8vw, 3rem);
   margin-top: 3rem;
