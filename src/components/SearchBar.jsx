@@ -15,6 +15,7 @@ export default function SearchBar({
 }) {
   return (
     <section id="search-bar">
+      <h2 className="sr-only">Search Bar</h2>
       <form className="container">
         <div className="search-input-container">
           <SearchInput
@@ -85,13 +86,15 @@ export function SelectList({
 }) {
   const [isShowing, setIsShowing] = useState(false);
 
+  const listId = options.join("");
+
   return (
     <div
       className="select-field"
       onClick={() => setIsShowing(!isShowing)}
       aria-haspopup="listbox"
-      aria-owns="options-list"
-      aria-controls="options-list"
+      aria-owns={listId}
+      aria-controls={listId}
       aria-activedescendant={isShowing ? selectedOption : undefined}
       tabIndex="1"
     >
@@ -100,6 +103,7 @@ export function SelectList({
       <ul
         className={`options-list ${isShowing ? "visible" : ""}`}
         aria-expanded={isShowing ? true : false}
+        id={listId}
       >
         {selectedOption && (
           <li onClick={() => onSelect(null)} key="reset">

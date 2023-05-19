@@ -24,7 +24,7 @@ export default function DetailPage({ country, borderCountries, initialTheme }) {
               <img
                 src={country.flags.svg}
                 className="flag"
-                alt={country.flags.alt}
+                alt={country.flags.alt || `${country.name.common}'s Flag`}
               />
 
               <div className="info">
