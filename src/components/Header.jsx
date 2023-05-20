@@ -30,14 +30,14 @@ function ThemeButton({ initialTheme }) {
       <FontAwesomeIcon
         icon={icon({
           style: "regular",
-          name: "moon",
+          name: "sun",
         })}
       />
     ) : (
       <FontAwesomeIcon
         icon={icon({
           style: "regular",
-          name: "sun",
+          name: "moon",
         })}
       />
     );
@@ -45,7 +45,7 @@ function ThemeButton({ initialTheme }) {
   return (
     <button className="theme-button" onClick={handleClick}>
       {themeIcon}
-      {theme === "dark" ? "Dark Mode" : "Light Mode"}
+      {theme === "dark" ? "Light Mode" : "Dark Mode"}
     </button>
   );
 }
